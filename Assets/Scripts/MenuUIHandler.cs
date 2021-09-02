@@ -26,9 +26,14 @@ public class MenuUIHandler : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void ResetHighScore()
+    {
+        GameManager.Instance.SaveHighScore(1);
+    }
+
     public void Exit()
     {
-        GameManager.Instance.SaveHighScore();
+        GameManager.Instance.SaveHighScore(0);
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else

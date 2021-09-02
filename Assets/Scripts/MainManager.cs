@@ -84,7 +84,7 @@ public class MainManager : MonoBehaviour
             GameManager.Instance.highScore = m_Points;
             GameManager.Instance.highScorePlayerName = GameManager.Instance.playerName;
             SetHighScoreText();
-            GameManager.Instance.SaveHighScore();
+            GameManager.Instance.SaveHighScore(0);
         }
         m_GameOver = true;
         GameOverText.SetActive(true);

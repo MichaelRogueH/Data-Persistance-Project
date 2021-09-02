@@ -38,16 +38,23 @@ public class GameManager : MonoBehaviour
         public int highScore;
     }
 
-    public void SaveHighScore()
+    public void SaveHighScore(int saveMode)
     {
-        Debug.Log("Save HighSore " + highScorePlayerName + " : " + highScore);
-            SaveData data = new SaveData();
-            //data.TeamColor = TeamColor;
-            data.highScorePlayerName = highScorePlayerName;
-            data.highScore = highScore;
-            string json = JsonUtility.ToJson(data);
+        
+        SaveData data = new SaveData();
+        //data.TeamColor = TeamColor;
+        if (saveMode == 1)
+        {
+            highScorePlayerName = "";
+            highScore = 0;
+        } 
+        data.highScorePlayerName = highScorePlayerName;
+        data.highScore = highScore;
+        
+        Debug.Log("Save HighSore " + data.highScorePlayerName + " : " + data.highScore);
+        string json = JsonUtility.ToJson(data);
 
-            File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
      
     }
 
